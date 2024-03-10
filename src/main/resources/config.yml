@@ -1,0 +1,14 @@
+# Dont format this file, only change values
+# Incorrect formatting will result in the entire configuration being reset!
+
+# Must be a boolean (true/false)
+debug: true
+
+# Must be a String (text)
+world-name: "world"
+
+default:
+  # Must be an integer (whole number)
+  sizeX: 15
+  sizeZ: 15
+  island-level: 0

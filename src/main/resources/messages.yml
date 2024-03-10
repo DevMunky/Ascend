@@ -1,0 +1,32 @@
+# All messages used in the plugin, uses the MiniMessage format!
+
+# prefix appended before all messages
+prefix: "<#808080>[<#87CEEB><bold>Ascend<#808080>] "
+
+# general command
+general:
+  unknown-command: "<#eb2d3a>Unknown command."
+  cannot-find: "<#eb2d3a>Could not find that island."
+
+# admin messages
+admin:
+  reload:
+    success: "<#6FC276>Successfully reloaded!"
+  debug:
+    enable: "<#6FC276>Enabled debug!"
+    disable: "<#eb2d3a>Disabled debug!"
+
+# "client" or player messages
+client:
+  island:
+    create:
+      success: "<#6FC276>Island successfully created."
+      fail: "<#eb2d3a>Island creation failed."
+      already-own: "<#eb2d3a>You already own a domain!"
+    delete:
+      success: "<#6FC276>Island successfully deleted."
+      fail: "<#eb2d3a>Island creation failed."
+    teleport:
+      first-success: "<#6FC276>Welcome to your island! Start breaking your one-block to get started!"
+      success: "<#6FC276>Welcome back."
+      fail: "<#eb2d3a>Could not teleport to your island."
