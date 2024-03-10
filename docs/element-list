@@ -1,0 +1,12 @@
+prog.ferrlix.ascend
+prog.ferrlix.ascend.annotations
+prog.ferrlix.ascend.commands
+prog.ferrlix.ascend.domains
+prog.ferrlix.ascend.events
+prog.ferrlix.ascend.generators
+prog.ferrlix.ascend.objects
+prog.ferrlix.ascend.permissions
+prog.ferrlix.ascend.util
+prog.ferrlix.ascend.util.sqlite
+prog.ferrlix.ascend.util.sqlite.tables
+prog.ferrlix.ascend.world
