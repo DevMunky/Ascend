@@ -7,13 +7,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import prog.ferrlix.ascend.Ascend;
 import prog.ferrlix.ascend.annotations.Command;
 import prog.ferrlix.ascend.events.DomainCreateEvent;
-import prog.ferrlix.ascend.domains.Domain;
+import prog.ferrlix.ascend.objects.domains.Domain;
 import prog.ferrlix.ascend.util.ConfigUtil;
 import prog.ferrlix.ascend.util.MessageUtil;
 
 @Command
 public class IslandCommand {
-    FileConfiguration messages = ConfigUtil.getInstance(Ascend.plugin, "messages.yml").getFileConfig();
+    FileConfiguration messages = ConfigUtil.get("messages.yml").getFileConfig();
     // /is new
     public IslandCommand(){
         new CommandAPICommand("island")

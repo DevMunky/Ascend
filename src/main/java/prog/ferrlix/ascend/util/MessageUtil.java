@@ -8,7 +8,6 @@ import prog.ferrlix.ascend.Ascend;
 
 import static net.kyori.adventure.text.Component.text;
 
-
 /**
  * Utilities for messages that get sent to players
  */
@@ -16,8 +15,8 @@ public class MessageUtil {
     /**
      * Should be the only MiniMessage.Builder instance
      */
-    public static MiniMessage.Builder builder = MiniMessage.builder();
-    static String submitIssue = "Please submit an issue on Github (github.com/Ferrlix/Ascend)!";
+    public static final MiniMessage.Builder builder = MiniMessage.builder();
+    private static final String submitIssue = "Please submit an issue on Discord! titanborn.net !";
     /**
      * use MiniMessage to deserialize a String
      * @param input String to deserialize
@@ -40,7 +39,10 @@ public class MessageUtil {
             Ascend.logger.severe("Path %s not found! %s".formatted(path,submitIssue));
             return text().append(text(" Path Not Found ")).build();
         }
-        String prefix = (String) config.get("prefix", null);
-        return stringToComponent(prefix).append(stringToComponent(string));
+        return stringToComponent(prefix(config)).append(stringToComponent(string));
+    }
+    public static String prefix(FileConfiguration config){
+        String string = (String) config.get("prefix", null);
+        return string != null ? string : "Prefix not found, make sure it is a root key in messages.yml"; // ternary to check whether prefix exists
     }
 }

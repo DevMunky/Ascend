@@ -7,11 +7,14 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import prog.ferrlix.ascend.bukkit.listeners.JoinListener;
 import prog.ferrlix.ascend.commands.IslandCommand;
 import prog.ferrlix.ascend.commands.MainCommand;
 import prog.ferrlix.ascend.generators.VoidGenerator;
+import prog.ferrlix.ascend.objects.domains.LocationMap;
 import prog.ferrlix.ascend.util.ConfigUtil;
 import prog.ferrlix.ascend.util.sqlite.SQLite;
+import prog.ferrlix.ascend.world.WorldHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,6 +39,7 @@ public final class Ascend extends JavaPlugin {
     /**
      * How to let other classes know debug is enabled
      */
+    private static WorldHandler worldHandler;
     public static boolean debug = true;
     FileConfiguration config;
     /**
@@ -63,27 +67,29 @@ public final class Ascend extends JavaPlugin {
      */
     public void reload(){
         logger.info("Ascend Custom Plugin Reloading!");
-        onDisable();
+        //onDisable();
         onEnable();
         logger.info("Ascend Custom Plugin Successfully Reloaded!");
     }
     //this exists to update static variables upon reload, because I cannot re-instantiate the class and use static{}
-    void instantiateStaticVariables(){
+    void instantiateStaticVariables(){ // These have to be in order of importance / usage
         plugin = this;
         logger = this.getLogger();
-        config = ConfigUtil.getInstance(this,"config.yml").getFileConfig();
+        config = ConfigUtil.get("config.yml").getFileConfig();
         debug = (boolean) config.get("settings.debug", debug);
+        worldHandler = new WorldHandler();
         if (debug){
             logger.warning("Debug Enabled!");
         }
+        LocationMap.init(); // Initialize the location map for domains
     }
     void checkDependancies(){
         MultiverseCore mvCore = (MultiverseCore) Bukkit.getPluginManager().getPlugin("Multiverse-Core");
         if (mvCore==null){
-            logger.severe("Multiverse Required");
+            logger.severe("Multiverse not found, but is required. Disabling...");
             Bukkit.getPluginManager().disablePlugin(this);
         }else{
-            logger.info("Multiverse found!");
+            logger.info("Multiverse found! Continuing...");
         }
     }
     void registerCommands(){
@@ -91,6 +97,7 @@ public final class Ascend extends JavaPlugin {
         new IslandCommand();
     }
     void registerEvents(){
+        Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
     }
     @Override
     public void onDisable() {
@@ -99,6 +106,7 @@ public final class Ascend extends JavaPlugin {
         Ascend.logger.info("Ascend is Disabling!");
         Ascend.logger.info("Ascend disabled, goodbye!");
     }
+    public WorldHandler getWorldHandler(){return worldHandler;}
 }
 
 //you need to finish SQLITE and possibly get some game testing in

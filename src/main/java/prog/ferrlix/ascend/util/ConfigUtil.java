@@ -1,9 +1,8 @@
 package prog.ferrlix.ascend.util;
 
-import org.apache.commons.io.IOUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import prog.ferrlix.ascend.Ascend;
 
@@ -18,42 +17,44 @@ import java.util.Map;
 public class ConfigUtil {
     private File file;
     private FileConfiguration config;
+
+    /**
+     * Register static fields, check File paths, and match keys in files.
+     * @param path path for the File associated with this instance
+     */
     ConfigUtil(String path){
-        register(path);
+        File tmpFile = new File(path);
+        if (!tmpFile.exists()){
+            Ascend.logger.severe("Path in data folder %s does not exist!".formatted(path));
+            // if the resource doesnt exist, then we messed up
+            if (Ascend.plugin.getResource(tmpFile.getName())==null){
+                Ascend.logger.severe("No resource found for %s ! Major config error, contact DevMunky or Optivat!".formatted(tmpFile.getName()));
+                Bukkit.getPluginManager().disablePlugin(Ascend.plugin);
+            }
+            // since the file doesnt exist, replace it with the one from resources
+            Ascend.plugin.saveResource(tmpFile.getName(), true);
+            Ascend.logger.warning("Created new %s because it did not exist before.".formatted(tmpFile.getName()));
+        }
+        this.file = tmpFile;
+        this.config = YamlConfiguration.loadConfiguration(this.file);
+        // "match" the config
+        matchConfig();
     }
     private static Map<String,ConfigUtil> soleInstances = new HashMap<>();
     /**
      * Get the instance from the instance map.
      * Every file has one instance for itself and no more.
-     * @param plugin this plugin instance, from static field in main class
+     * Warn if the file does not exist, yet still create that object, because the constructor will create one.
+     * If the constructor errors, nothing will happen except for error messages and NPE wherever the config is used.
      * @param fileName name of file in the plugin folder
      * @return The configuration
      */
-    public static synchronized ConfigUtil getInstance(@NotNull Plugin plugin, String fileName){
-        String path = plugin.getDataFolder().getAbsolutePath() + "\\" + fileName;
-        if (!new File(path).exists()){
-            Ascend.logger.severe("Path in data folder %s does not exist!".formatted(path));
-        }
-        if (soleInstances.get(path) == null)
+    @NotNull
+    public static synchronized ConfigUtil get(String fileName){
+        String path = Ascend.plugin.getDataFolder().getAbsolutePath() + "\\" + fileName;
+        if (soleInstances.get(path)==null)
             soleInstances.put(path, new ConfigUtil(path));
-        soleInstances.get(path).register(path);
         return soleInstances.get(path);
-    }
-    private void register(String path){
-        try{
-            File tmpFile = new File(path);
-            if (tmpFile.length() == 0){
-                String[] paths = path.split("/");
-                path = paths[paths.length - 1];
-                InputStream resource = Ascend.plugin.getResource(path);
-                if (resource != null){
-                    writeInputStreamToFile(Ascend.plugin.getResource(path), tmpFile);}}
-            this.file = tmpFile;
-            this.config = YamlConfiguration.loadConfiguration(this.file);
-            matchConfig();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
     public File getFile(){return this.file;}
     public FileConfiguration getFileConfig(){return this.config;}
@@ -76,13 +77,6 @@ public class ConfigUtil {
             }Ascend.logger.warning("Match Config - Getting resource %s returned null".formatted(file.getName()));
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-    public void writeInputStreamToFile(InputStream inputStream, File file){
-        try(OutputStream outputStream = new FileOutputStream(file)){
-            IOUtils.copy(inputStream, outputStream);
-        } catch (Exception e) {
-            // handle exception here
         }
     }
 }

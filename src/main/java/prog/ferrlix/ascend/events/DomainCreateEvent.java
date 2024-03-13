@@ -5,7 +5,8 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-import prog.ferrlix.ascend.domains.Domain;
+import prog.ferrlix.ascend.objects.domains.Domain;
+import prog.ferrlix.ascend.objects.domains.LocationMap;
 
 import java.util.UUID;
 
@@ -32,6 +33,7 @@ public class DomainCreateEvent extends Event implements Cancellable{
                 null,
                 owner
         );
+        LocationMap.registerDomain(this.domain);
         this.isCancelled = false;
     }
     public UUID getOwner(){return owner;}

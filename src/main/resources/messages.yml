@@ -7,6 +7,7 @@ prefix: "<#808080>[<#87CEEB><bold>Ascend<#808080>] "
 general:
   unknown-command: "<#eb2d3a>Unknown command."
   cannot-find: "<#eb2d3a>Could not find that island."
+  welcome: "<#6FC276>Welcome!"
 
 # admin messages
 admin:

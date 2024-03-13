@@ -3,7 +3,6 @@ package prog.ferrlix.ascend.commands;
 import dev.jorel.commandapi.CommandAPI;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.StringArgument;
-import dev.jorel.commandapi.executors.CommandExecutor;
 import dev.jorel.commandapi.executors.ConsoleCommandExecutor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,7 +17,7 @@ import prog.ferrlix.ascend.util.MessageUtil;
  */
 @Command
 public class MainCommand {
-    FileConfiguration messages = ConfigUtil.getInstance(Ascend.plugin, "messages.yml").getFileConfig();
+    FileConfiguration messages = ConfigUtil.get("messages.yml").getFileConfig();
     public MainCommand(){
         new CommandAPICommand("ascend")
                 .withArguments(new StringArgument("action"))
@@ -41,8 +40,11 @@ public class MainCommand {
                                 Ascend.debug = true;
                                 sender.sendMessage(MessageUtil.get(messages, "admin.debug.disable"));}
                         }
+                        case "world"->{
+                            Ascend.instance.getWorldHandler().checkWorld();
+                        }
                         default -> {
-
+                            sender.sendMessage(MessageUtil.get(messages, "general.unknown-command"));
                         }
                     }
                 }).register();

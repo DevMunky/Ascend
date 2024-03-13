@@ -7,8 +7,17 @@ debug: true
 # Must be a String (text)
 world-name: "world"
 
-default:
-  # Must be an integer (whole number)
-  sizeX: 15
-  sizeZ: 15
+# Either "one" or "multiple"
+# one meaning only one world will be used for all players worlds
+# multiple meaning each player gets their own world
+island-world-mode: "one"
+
+# Must be an integer (whole number)
+start:
+  sizex: 15
+  sizez: 15
   island-level: 0
+max:
+  sizex: 200
+  sizez: 200
+  island-level: 100
