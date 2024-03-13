@@ -61,6 +61,9 @@ public final class Ascend extends JavaPlugin {
         // would register sqlite, but it's a static utility class!
         checkDependancies();
         Ascend.logger.info("Ascend fully enabled! SET UP WORLD HANDLER");
+        //TODO finish worldHandler
+        //TODO finish SQLITE save method
+        //TODO finish LocationMap and etc.
     }
     /**
      * Method to reload from command. Should only really have one usage in MainCommand

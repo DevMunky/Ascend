@@ -16,6 +16,7 @@ public class WorldHandler {
     public static World world; //World for Ascend to use for everything
     MultiverseCore mvCore = (MultiverseCore) Bukkit.getPluginManager().getPlugin("Multiverse-Core");
     FileConfiguration config = ConfigUtil.get("config.yml").getFileConfig();
+    //TODO fix checkWorld() and add debug logging, it doesn't work but I don't know where
     public void checkWorld(){
         Collection<MultiverseWorld> worlds = mvCore.getMVWorldManager().getMVWorlds();
         ArrayList<String> worldNames = new ArrayList<>();

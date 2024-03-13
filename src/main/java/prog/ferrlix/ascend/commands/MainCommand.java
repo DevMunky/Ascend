@@ -20,7 +20,7 @@ public class MainCommand {
     FileConfiguration messages = ConfigUtil.get("messages.yml").getFileConfig();
     public MainCommand(){
         new CommandAPICommand("ascend")
-                .withArguments(new StringArgument("action"))
+                .withOptionalArguments(new StringArgument("action"))
                 .withAliases("as")
                 .executes((sender, args) -> {
                     String action = (String) args.get("action");
@@ -40,7 +40,7 @@ public class MainCommand {
                                 Ascend.debug = true;
                                 sender.sendMessage(MessageUtil.get(messages, "admin.debug.disable"));}
                         }
-                        case "world"->{
+                        case"world","w"->{
                             Ascend.instance.getWorldHandler().checkWorld();
                         }
                         default -> {
