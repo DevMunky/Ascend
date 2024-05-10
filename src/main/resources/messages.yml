@@ -1,7 +1,7 @@
 # All messages used in the plugin, uses the MiniMessage format!
 
 # prefix appended before all messages
-prefix: "<#808080>[<#87CEEB><bold>Ascend<#808080>] "
+prefix: "<#808080>[<#87CEEB><bold>Ascend<#808080>] >> "
 
 # general command
 general:

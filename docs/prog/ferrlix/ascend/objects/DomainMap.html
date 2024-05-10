@@ -108,7 +108,7 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">DomainMap</a>()</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(org.bukkit.entity.Player,java.util.Collection)" class="member-name-link">DomainMap</a><wbr>(org.bukkit.entity.Player&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;permissionLevels)</code></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;levels)</code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
@@ -125,19 +125,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPerm(org.bukkit.entity.Player,prog.ferrlix.ascend.permissions.PermissionLevel)" class="member-name-link">addPerm</a><wbr>(org.bukkit.entity.Player&nbsp;p,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPerm(org.bukkit.entity.Player,permissions.dev.munky.ascend.PermissionLevels.Level)" class="member-name-link">addPerm</a><wbr>(org.bukkit.entity.Player&nbsp;p,
  <a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&nbsp;perm)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addPlayer(org.bukkit.entity.Player,java.util.Collection)" class="member-name-link">addPlayer</a><wbr>(org.bukkit.entity.Player&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;permissionLevels)</code></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;levels)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasPerm(org.bukkit.entity.Player,prog.ferrlix.ascend.permissions.PermissionLevel)" class="member-name-link">hasPerm</a><wbr>(org.bukkit.entity.Player&nbsp;p,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasPerm(org.bukkit.entity.Player,permissions.dev.munky.ascend.PermissionLevels.Level)" class="member-name-link">hasPerm</a><wbr>(org.bukkit.entity.Player&nbsp;p,
  <a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&nbsp;perm)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removePerm(org.bukkit.entity.Player,prog.ferrlix.ascend.permissions.PermissionLevel)" class="member-name-link">removePerm</a><wbr>(org.bukkit.entity.Player&nbsp;p,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removePerm(org.bukkit.entity.Player,permissions.dev.munky.ascend.PermissionLevels.Level)" class="member-name-link">removePerm</a><wbr>(org.bukkit.entity.Player&nbsp;p,
  <a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&nbsp;perm)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
@@ -181,7 +181,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(org.bukkit.entity.Player,java.util.Collection)">
 <h3>DomainMap</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">DomainMap</span><wbr><span class="parameters">(org.bukkit.entity.Player&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;permissionLevels)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;levels)</span></div>
 </section>
 </li>
 <li>
@@ -199,21 +199,21 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="hasPerm(org.bukkit.entity.Player,prog.ferrlix.ascend.permissions.PermissionLevel)">
+<section class="detail" id="hasPerm(org.bukkit.entity.Player,permissions.dev.munky.ascend.PermissionLevels.Level)">
 <h3>hasPerm</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasPerm</span><wbr><span class="parameters">(org.bukkit.entity.Player&nbsp;p,
  <a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&nbsp;perm)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="addPerm(org.bukkit.entity.Player,prog.ferrlix.ascend.permissions.PermissionLevel)">
+<section class="detail" id="addPerm(org.bukkit.entity.Player,permissions.dev.munky.ascend.PermissionLevels.Level)">
 <h3>addPerm</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addPerm</span><wbr><span class="parameters">(org.bukkit.entity.Player&nbsp;p,
  <a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&nbsp;perm)</span></div>
 </section>
 </li>
 <li>
-<section class="detail" id="removePerm(org.bukkit.entity.Player,prog.ferrlix.ascend.permissions.PermissionLevel)">
+<section class="detail" id="removePerm(org.bukkit.entity.Player,permissions.dev.munky.ascend.PermissionLevels.Level)">
 <h3>removePerm</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removePerm</span><wbr><span class="parameters">(org.bukkit.entity.Player&nbsp;p,
  <a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&nbsp;perm)</span></div>
@@ -223,7 +223,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="addPlayer(org.bukkit.entity.Player,java.util.Collection)">
 <h3>addPlayer</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addPlayer</span><wbr><span class="parameters">(org.bukkit.entity.Player&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;permissionLevels)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="../permissions/PermissionLevel.html" title="enum class in prog.ferrlix.ascend.permissions">PermissionLevel</a>&gt;&nbsp;levels)</span></div>
 </section>
 </li>
 <li>

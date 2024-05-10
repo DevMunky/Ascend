@@ -10,7 +10,17 @@ world-name: "world"
 # Either "one" or "multiple"
 # one meaning only one world will be used for all players worlds
 # multiple meaning each player gets their own world
-island-world-mode: "one"
+
+data:
+  type: mysql
+  mysql:
+    host:
+    port:
+    database:
+    username:
+    password:
+  sqlite:
+    path:
 
 # Must be an integer (whole number)
 start:
