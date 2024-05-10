@@ -1,6 +1,6 @@
 name: Ascend
 version: '${version}'
-main: prog.ferrlix.ascend.Ascend
+main: dev.munky.ascend.Ascend
 api-version: '1.20'
 load: STARTUP
 depend:
