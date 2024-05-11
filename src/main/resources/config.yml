@@ -21,13 +21,3 @@ data:
     password:
   sqlite:
     path:
-
-# Must be an integer (whole number)
-start:
-  sizex: 15
-  sizez: 15
-  island-level: 0
-max:
-  sizex: 200
-  sizez: 200
-  island-level: 100
