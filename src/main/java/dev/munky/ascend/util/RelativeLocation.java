@@ -7,16 +7,16 @@ import org.bukkit.World;
 
 public record RelativeLocation(
         double x,
-        double y,
         double z
 ) {
     public RelativeLocation(Location location){
-        this(location.x(), location.y(), location.z());
+        this(location.x(), location.z());
     }
     public Location toBukkitLocation(){
-        return new Location(Bukkit.getWorld(Ascend.config.domainWorldName),x,y,z);
+        World world = Ascend.config.domainWorld;
+        return new Location(world,x,world.getSeaLevel(),z);
     }
     public Location toBukkitLocation(World world){
-        return new Location(world,x,y,z);
+        return new Location(world,x,world.getSeaLevel(),z);
     }
 }

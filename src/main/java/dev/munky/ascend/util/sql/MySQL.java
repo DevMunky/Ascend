@@ -1,20 +1,16 @@
-package dev.munky.ascend.util.sqlite;
+package dev.munky.ascend.util.sql;
 
 import dev.munky.ascend.util.Logging;
 
 import java.sql.*;
-
-/**
- * Another singleton, this time for data storage (mostly domains)
- */
 public class MySQL {
 
-    public static String host = "minepedia.eu";
+    public static String host = "localhost";
     public static String port = "3306";
     public static String database = "GlobalData";
     public static String username = "******";
     public static String password = "*****";
-    public static Connection connection;
+    private static Connection connection;
 
     // connect
     public static void connect() {
@@ -50,26 +46,5 @@ public class MySQL {
     // getConnection
     public static Connection getConnection() {
         return connection;
-    }
-    public static void createTable() throws SQLException {
-        PreparedStatement ps = connection.prepareStatement("CREATE TABLE IF NOT EXISTS Players (Name VARCHAR(100),UUID VARCHAR(100),Coins INT(100),PRIMARY KEY (Name))");
-        ps.executeUpdate();
-    }
-    public static void updateTable() throws SQLException {
-        PreparedStatement ps = MySQL.getConnection().prepareStatement("INSERT IGNORE INTO Players (Name,UUID,Coins) VALUES (?,?,?)");
-        ps.setString(1, "TEST PLAYER");
-        ps.setString(2, "TEST UUID");
-        ps.setInt(3, 10);
-        ps.executeUpdate();
-    }
-    public static int readTable() throws SQLException {
-        PreparedStatement ps = MySQL.getConnection().prepareStatement("SELECT Coins FROM Players WHERE Name = ?");
-        ps.setString(1, "TEST PLAYER");
-        ResultSet rs = ps.executeQuery();
-        int coins = 0;
-        if (rs.next()) {
-            coins = rs.getInt("Coins");
-        }
-        return coins;
     }
 }

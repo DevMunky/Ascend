@@ -21,9 +21,6 @@ public abstract class AscendedConfiguration {
         this.yaml = yamlConfiguration;
     }
     public AscendedConfiguration(String fileName){
-        File file = new File(PLUGIN_FOLDER.getAbsolutePath() + File.separatorChar + fileName);
-        YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
-        this.file = file;
-        this.yaml = yamlConfiguration;
+        this(new File(PLUGIN_FOLDER.getAbsolutePath() + File.separatorChar + fileName));
     }
 }

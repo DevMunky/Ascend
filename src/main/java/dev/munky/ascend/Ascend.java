@@ -1,16 +1,17 @@
 package dev.munky.ascend;
 
+import com.google.gson.Gson;
 import com.onarandombox.MultiverseCore.MultiverseCore;
 import dev.munky.ascend.bukkit.listeners.PlayerListener;
 import dev.munky.ascend.commands.AdminCommand;
 import dev.munky.ascend.commands.IslandCommand;
+import dev.munky.ascend.domain.IslandManager;
 import dev.munky.ascend.generators.VoidGenerator;
 import dev.munky.ascend.util.Logging;
 import dev.munky.ascend.util.configuration.ItemConfiguration;
 import dev.munky.ascend.util.configuration.MainConfiguration;
 import dev.munky.ascend.util.configuration.MessageConfiguration;
-import dev.munky.ascend.util.sqlite.MySQL;
-import dev.munky.ascend.world.WorldHandler;
+import dev.munky.ascend.util.sql.MySQL;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
@@ -23,13 +24,15 @@ import java.util.logging.Logger;
  * One block plugin main class
  */
 public final class Ascend extends JavaPlugin {
-    public static final Ascend instance = new Ascend();
+    public static Ascend instance;
     public static Plugin plugin;
     public static Logger logger;
     public static boolean debug = true;
     public static MainConfiguration config;
     public static ItemConfiguration item;
     public static MessageConfiguration message;
+    public static IslandManager islandManager;
+    public static Gson gson = new Gson();
     @Override
     public ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, String id) {
         Logging.info("Ascend's VoidGenerator is being used!");
@@ -42,7 +45,6 @@ public final class Ascend extends JavaPlugin {
         registerCommands();
         registerEvents();
         MySQL.connect();
-        WorldHandler.checkWorld();
         checkDependencies();
         Logging.info("Success! Time to Ascend");
     }
@@ -59,10 +61,12 @@ public final class Ascend extends JavaPlugin {
     void instantiateStaticVariables(){ // These have to be in order of importance / usage
         Logging.debug("Initiating Certain Fields...");
         plugin = this;
+        instance = this;
         logger = this.getLogger();
         config = new MainConfiguration();
         item = new ItemConfiguration();
         message = new MessageConfiguration();
+        islandManager = new IslandManager(this);
         debug = config.yaml.getBoolean("debug", debug);
         if (debug){
             Logging.warning("Debug Enabled!");
